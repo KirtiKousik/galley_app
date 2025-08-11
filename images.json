@@ -1,0 +1,32 @@
+{
+  "images": [
+    {
+      "name": "image1.jpeg",
+      "alt": "Gallery Image 1"
+    },
+    {
+      "name": "image2.jpeg", 
+      "alt": "Gallery Image 2"
+    },
+    {
+      "name": "image3.jpeg",
+      "alt": "Gallery Image 3"
+    },
+    {
+      "name": "image4.jpeg",
+      "alt": "Gallery Image 4"
+    },
+    {
+      "name": "image5.jpeg",
+      "alt": "Gallery Image 5"
+    },
+    {
+      "name": "image6.jpeg",
+      "alt": "Gallery Image 6"
+    },
+    {
+      "name": "image7.jpeg",
+      "alt": "Gallery Image 7"
+    }
+  ]
+}
