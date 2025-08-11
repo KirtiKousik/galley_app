@@ -66,7 +66,7 @@ class ImageGallery {
     
     createImageCard(image, index) {
         const card = document.createElement('div');
-        card.className = 'image-card bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden cursor-pointer border border-white/20 hover:border-white/40 group';
+        card.className = 'image-card rounded-2xl overflow-hidden cursor-pointer group shadow-sm';
         
         card.innerHTML = `
             <div class="aspect-square overflow-hidden relative">
@@ -76,11 +76,11 @@ class ImageGallery {
                     class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
                     loading="lazy"
                 >
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
-                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <div class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
                             <span class="text-white text-sm font-medium">View</span>
                         </div>
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,9 +89,8 @@ class ImageGallery {
                     </div>
                 </div>
             </div>
-            <div class="p-4">
-                <!--<p class="text-white/90 text-sm font-medium truncate">${image.name}</p> -->
-                <p class="text-white/60 text-xs mt-1">${image.alt || 'Gallery image'}</p>
+            <div class="p-4 bg-white">
+                <p class="text-gray-600 text-sm truncate">${image.alt || 'Gallery image'}</p>
             </div>
         `;
         
