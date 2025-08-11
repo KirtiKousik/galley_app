@@ -3,12 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DNS Agency Gallery</title>
+    <title>NDS Agency Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            colors: {
+              "nds-teal": "#28B0A7",
+              "nds-blue": "#2F62F0",
+              "nds-navy": "#0E2433",
+              "nds-purple": "#E8E5F3",
+              "nds-light": "#F8F7FC",
+            },
             animation: {
               "fade-in": "fadeIn 0.6s ease-in-out",
               "slide-up": "slideUp 0.5s ease-out",
@@ -29,36 +36,62 @@
       };
     </script>
     <style>
+      body {
+        background: linear-gradient(135deg, #e8e5f3 0%, #f8f7fc 100%);
+        min-height: 100vh;
+      }
       .glass-effect {
         backdrop-filter: blur(10px);
-        background: rgba(255, 255, 255, 0.1);
-      }
-      .gradient-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
       }
       .image-card {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(40, 176, 167, 0.1);
       }
       .image-card:hover {
         transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(40, 176, 167, 0.15);
+        border-color: rgba(40, 176, 167, 0.3);
+      }
+      .nav-link {
+        color: #6b7280;
+        transition: color 0.2s ease;
+      }
+      .nav-link:hover {
+        color: #28b0a7;
+      }
+      .nav-link.active {
+        color: #28b0a7;
+        font-weight: 600;
       }
     </style>
   </head>
-  <body class="gradient-bg min-h-screen">
+  <body>
     <!-- Header -->
-    <header class="glass-effect border-b border-white/20">
-      <div class="container mx-auto px-6 py-6">
+    <header class="glass-effect shadow-sm">
+      <div class="container mx-auto px-6 py-8">
+        <!-- Logo and Title -->
         <div class="text-center animate-fade-in">
-          <h1 class="text-5xl font-bold text-white mb-2 tracking-tight">
-            DNS
-            <span
-              class="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent"
-              >Agency</span
+          <div class="flex justify-center mb-6">
+            <img src="logo.svg" alt="NDS Agency" class="h-16 w-auto" />
+          </div>
+          <div class="mt-4">
+            <h1
+              class="text-5xl md:text-6xl font-light text-nds-navy mb-3 tracking-wide"
             >
-          </h1>
-          <p class="text-white/80 text-lg">
-            Discover beautiful moments captured in time
-          </p>
+              Gallery
+            </h1>
+            <div
+              class="w-24 h-1 bg-gradient-to-r from-nds-teal to-nds-blue mx-auto mb-4 rounded-full"
+            ></div>
+            <p
+              class="text-gray-500 text-base md:text-lg font-light max-w-md mx-auto leading-relaxed"
+            >
+              Discover beautiful moments captured in time
+            </p>
+          </div>
         </div>
       </div>
     </header>
@@ -67,13 +100,13 @@
       <!-- Loading indicator -->
       <div id="loading" class="text-center animate-pulse-slow">
         <div
-          class="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4"
+          class="inline-flex items-center justify-center w-16 h-16 bg-nds-teal/20 rounded-full mb-4"
         >
           <div
-            class="w-8 h-8 border-3 border-white/30 border-t-white rounded-full animate-spin"
+            class="w-8 h-8 border-3 border-nds-teal/30 border-t-nds-teal rounded-full animate-spin"
           ></div>
         </div>
-        <p class="text-white/90 text-lg font-medium">
+        <p class="text-nds-navy text-lg font-medium">
           Curating your gallery...
         </p>
       </div>
@@ -81,10 +114,10 @@
       <!-- Gallery Stats -->
       <div id="gallery-stats" class="text-center mb-8 hidden animate-slide-up">
         <div
-          class="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20"
+          class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-nds-teal/20 shadow-sm"
         >
           <svg
-            class="w-5 h-5 text-white/80 mr-2"
+            class="w-5 h-5 text-nds-teal mr-2"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -96,7 +129,7 @@
               d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
             ></path>
           </svg>
-          <span id="image-count" class="text-white/90 font-medium"
+          <span id="image-count" class="text-nds-navy font-medium"
             >0 images</span
           >
         </div>
@@ -111,10 +144,10 @@
       <!-- Error message -->
       <div id="error" class="text-center hidden animate-fade-in">
         <div
-          class="bg-red-500/20 backdrop-blur-sm border border-red-400/30 rounded-2xl p-8 max-w-md mx-auto"
+          class="bg-red-50 border border-red-200 rounded-2xl p-8 max-w-md mx-auto shadow-sm"
         >
           <svg
-            class="w-12 h-12 text-red-400 mx-auto mb-4"
+            class="w-12 h-12 text-red-500 mx-auto mb-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -126,10 +159,10 @@
               d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
             ></path>
           </svg>
-          <h3 class="text-white text-xl font-semibold mb-2">
+          <h3 class="text-nds-navy text-xl font-semibold mb-2">
             Oops! Something went wrong
           </h3>
-          <p class="text-white/80">
+          <p class="text-gray-600">
             Failed to load images. Please check your images.json file.
           </p>
         </div>
@@ -150,20 +183,20 @@
         />
         <button
           id="close-modal"
-          class="absolute -top-4 -right-4 w-12 h-12 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white text-2xl font-bold transition-all duration-200 hover:scale-110 border border-white/20"
+          class="absolute -top-4 -right-4 w-12 h-12 bg-nds-teal/80 backdrop-blur-sm hover:bg-nds-teal rounded-full flex items-center justify-center text-white text-2xl font-bold transition-all duration-200 hover:scale-110 border border-white/20"
         >
           ×
         </button>
         <!-- Navigation arrows -->
         <button
           id="prev-image"
-          class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 border border-white/20"
+          class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-nds-teal/80 backdrop-blur-sm hover:bg-nds-teal rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 border border-white/20"
         >
           ←
         </button>
         <button
           id="next-image"
-          class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 border border-white/20"
+          class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-nds-teal/80 backdrop-blur-sm hover:bg-nds-teal rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 border border-white/20"
         >
           →
         </button>
