@@ -24,25 +24,29 @@ class ImageGallery {
     }
     
     async loadImages() {
-        try {
-            this.showLoading();
-            
-            const response = await fetch('images.json');
-            if (!response.ok) {
-                throw new Error('Failed to fetch images.json');
-            }
-            
-            const data = await response.json();
-            this.images = data.images;
-            this.renderGallery(data.images);
-            this.updateStats(data.images.length);
-            this.hideLoading();
-            
+    try {
+        this.showLoading();
+
+        const response = await fetch('images.json');
+        if (!response.ok) {
+            throw new Error('Failed to fetch images.json');
+        }
+
+        const data = await response.json();
+        
+        // Reverse the order of images
+        this.images = data.images.slice().reverse();
+
+        this.renderGallery(this.images);
+        this.updateStats(this.images.length);
+        this.hideLoading();
+
         } catch (error) {
-            console.error('Error loading images:', error);
-            this.showError();
+        console.error('Error loading images:', error);
+        this.showError();
         }
     }
+
     
     renderGallery(images) {
         this.galleryContainer.innerHTML = '';
